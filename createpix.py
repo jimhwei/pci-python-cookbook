@@ -1,3 +1,5 @@
+# Bug: Running this file creates a massive 700 mb + pix file
+
 from pci.cimpro2 import cimpro2
 
 new_file = r"C:\Users\jimwe\Google_Drive\aFlemingWinter\GEOM75-Advanced-RS\python-cookbook\first-empty-file.pix"

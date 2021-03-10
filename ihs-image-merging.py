@@ -16,9 +16,10 @@ from pci.rgb import rgb
 #Add new image channels to existing file
 print("Pix file must be set up as Channel 1: SPOT Pan June 4, 1985 \nChannel 2-5: TM Band 1-4")
 print("Put the correct pix file path into new_file")
+# Input version
 # new_file = input("Enter file path: ")
 # new_file = r"{}".format(new_file)
-new_file = r"C:\Users\jimwe\github\pci-python-cookbook\OakRidgesV1.pix" # File location
+new_file = r"C:\PCI Geomatics\OakRidgesV1.pix" # File location, reset to local path
 channels = [7] #add 7 8bit channels for analysis
 
 # Adding new channels
