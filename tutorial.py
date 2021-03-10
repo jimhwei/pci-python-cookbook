@@ -1,4 +1,5 @@
 import pci
+from pci.pcimod import pcimod
 from pci.ihs import ihs
 from pci.fun import fun
 from pci.lut import lut
@@ -6,7 +7,14 @@ from pci.rgb import rgb
 # print("This version of PCI is", pci.version)
 # print(ihs)
 
-file = r"C:\Users\jimwe\github\pci-python-cookbook\OakRidgesV1.pix" # File location
+#Add new image channels to existing file
+new_file = r"C:\Users\jimwe\github\pci-python-cookbook\OakRidgesV1.pix" # File location
+channels = [7] #add 4 8bit, 0 16bit signed, 3 16bit unsigned and 1 32bit real channels
+
+# Adding new channels
+pcimod(file=new_file, pciop="ADD", pcival=channels)
+
+file = new_file
 dbic = [5,4,3] # Input RGB channels
 # Need empty channels
 dboc = [6,7,8] # Output IHS channels
@@ -32,7 +40,7 @@ fun(file, func, dbic, dblut, dbsn, dbsd, ostr, sdpt, trim, mask, dbhc, lasc)
 fili = file
 dbic = [1]
 lutfile = file # Input file name
-dblut = [3] # This should match the lut file created
+dblut = [2] # This should match the lut file created
 maskfile = ""
 mask = []
 filo = fili
