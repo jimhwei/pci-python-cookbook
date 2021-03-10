@@ -1,32 +1,42 @@
+"""
+Image Merging using Intensity Hue Saturation (IHS) Method using PCI Geomatica
+Author: Jim Honglin Wei
+Date: 2021-03-10
+Reference/Source: Frank Kenny, GEOM075ImageFusionV1, PCI Geomatica, PCI Geomatica Python Cookbook
+License: MIT License
+"""
+
 import pci
 from pci.pcimod import pcimod
 from pci.ihs import ihs
 from pci.fun import fun
 from pci.lut import lut
 from pci.rgb import rgb
-# print("This version of PCI is", pci.version)
-# print(ihs)
 
 #Add new image channels to existing file
+print("Pix file must be set up as Channel 1: SPOT Pan June 4, 1985 \nChannel 2-5: TM Band 1-4")
+print("Put the correct pix file path into new_file")
+# new_file = input("Enter file path: ")
+# new_file = r"{}".format(new_file)
 new_file = r"C:\Users\jimwe\github\pci-python-cookbook\OakRidgesV1.pix" # File location
-channels = [7] #add 4 8bit, 0 16bit signed, 3 16bit unsigned and 1 32bit real channels
+channels = [7] #add 7 8bit channels for analysis
 
 # Adding new channels
 pcimod(file=new_file, pciop="ADD", pcival=channels)
 
 file = new_file
 dbic = [5,4,3] # Input RGB channels
-# Need empty channels
 dboc = [6,7,8] # Output IHS channels
 dbiw = [] # Input Window - Optional
 ihsmodel = "CYLINDER"
 
 ihs(file, dbic, dboc, dbiw, ihsmodel)
 
+# Empty variables indicate optional variables as indicated from documentation
 func = "MATC" # Enhancement function
 dbic = [1] # Input raster channel(s)
 dblut = []
-dbsn = "Testing"
+dbsn = "SPOT" # Segment name
 dbsd = "SPOT Matched to Intensity" # Output LUT segment description
 ostr = []
 sdpt = []
