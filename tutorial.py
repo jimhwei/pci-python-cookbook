@@ -2,6 +2,7 @@ import pci
 from pci.ihs import ihs
 from pci.fun import fun
 from pci.lut import lut
+from pci.rgb import rgb
 # print("This version of PCI is", pci.version)
 # print(ihs)
 
@@ -41,3 +42,10 @@ ftype = ""
 foptions = ""
 
 lut(fili, dbic, lutfile, dblut, maskfile, mask, filo, dboc, datatype, ftype, foptions)
+
+dbic = [9,7,8]
+dboc = [10,11,12]
+dbiw = []
+ihsmodel = "CYLINDER"
+
+rgb(file, dbic, dboc, dbiw, ihsmodel)
